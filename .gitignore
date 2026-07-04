@@ -1,0 +1,33 @@
+﻿# 忽略文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.env
+
+# 数据文件
+*.db
+*.sqlite
+data/cache/
+data/raw/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日志
+logs/
+*.log
+
+# 敏感信息
+config/credentials.py
+
+# Jupyter
+.ipynb_checkpoints/
+
