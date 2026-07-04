@@ -1,0 +1,41 @@
+﻿# Docker Compose配置
+
+version: '3.8'
+
+services:
+  # 量化交易系统
+  quant-trading:
+    build: .
+    container_name: quant-trading
+    volumes:
+      # 挂载数据目录（持久化）
+      - ./data:/app/data
+      # 挂载日志目录
+      - ./logs:/app/logs
+      # 挂载报告目录
+      - ./reports:/app/reports
+      # 挂载配置文件
+      - ./config:/app/config
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    # 保持容器运行
+    stdin_open: true
+    tty: true
+    # 重启策略
+    restart: unless-stopped
+
+  # 定时任务（可选）
+  scheduler:
+    build: .
+    container_name: quant-scheduler
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+    command: >
+      sh -c "
+        echo '0 9 * * 1-5 python scripts/run_daily_report.py' > /etc/crontabs/root &&
+        crond -f -l 8
+      "
+    restart: unless-stopped
