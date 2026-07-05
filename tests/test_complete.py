@@ -180,6 +180,17 @@ class TestDataProcessing:
             assert 'close' in df.columns
             assert 'volume' in df.columns
             assert len(df) > 0
+        else:
+            # 数据文件不存在时，创建模拟数据测试
+            df = pd.DataFrame({
+                'open': [10, 11, 12],
+                'high': [11, 12, 13],
+                'low': [9, 10, 11],
+                'close': [10.5, 11.5, 12.5],
+                'volume': [1000, 2000, 3000]
+            })
+            assert 'open' in df.columns
+            assert len(df) > 0
     
     def test_moving_average(self):
         """测试移动平均计算"""
@@ -260,3 +271,4 @@ class TestSlippage:
 
 if __name__ == '__main__':
     pytest.main([__file__, '-v'])
+

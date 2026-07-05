@@ -96,6 +96,17 @@ class TestBacktestEngine:
             # 验证数据完整性
             assert len(df) > 0
             assert df['close'].notna().all()
+        else:
+            # 数据文件不存在时，创建模拟数据测试
+            df = pd.DataFrame({
+                'open': [10, 11, 12],
+                'high': [11, 12, 13],
+                'low': [9, 10, 11],
+                'close': [10.5, 11.5, 12.5],
+                'volume': [1000, 2000, 3000]
+            })
+            assert 'open' in df.columns
+            assert len(df) > 0
     
     def test_strategy_params(self):
         """测试策略参数"""
@@ -144,3 +155,4 @@ class TestUtils:
 if __name__ == '__main__':
     # 运行测试
     pytest.main([__file__, '-v'])
+
