@@ -4,6 +4,9 @@
 """
 
 import backtrader as bt
+from typing import Dict, List, Optional, Any, Tuple
+import logging
+from utils.error_handler import ErrorHandler, BacktestError
 import pandas as pd
 import os
 import sys
@@ -31,7 +34,15 @@ class BacktestEngine:
         self.cerebro = None
         self.results = None
         
-    def setup(self, data_file, strategy_class, strategy_params=None):
+    def setup(self, data_file: str, strategy_class: type, strategy_params: Optional[Dict[str, Any]] = None) -> None:
+        """
+        设置回测
+        
+        Args:
+            data_file: 数据文件路径
+            strategy_class: 策略类
+            strategy_params: 策略参数
+        """
         self.cerebro = bt.Cerebro()
         
         if not os.path.exists(data_file):
@@ -64,7 +75,30 @@ class BacktestEngine:
         print(f"  初始资金: {self.initial_cash:,.2f}")
         print(f"  手续费: {self.commission*100}%")
         
-    def run(self, print_log=True):
+    def run(self, print_log: bool = True) -> Dict[str, Any]:
+        """
+        运行回测
+        
+        Args:
+            print_log: 是否打印日志
+            
+        Returns:
+            Dict: 回测结果
+            
+        Raises:
+            BacktestError: 回测失败时抛出
+        """
+        if self.cerebro is None:
+            raise BacktestError("请先调用 setup() 设置回测")
+        """
+        运行回测
+        
+        Args:
+            print_log: 是否打印日志
+            
+        Returns:
+            Dict: 回测结果
+        """
         if self.cerebro is None:
             raise ValueError("请先调用 setup() 设置回测")
         
@@ -169,4 +203,6 @@ class BacktestEngine:
             print(f"{name:<15} {result['total_return']:<10.2%} {sharpe_str:<10} {dd_str:<10} {wr_str:<10}")
         
         return results
+
+
 

@@ -34,6 +34,15 @@ class SecurityUtils:
         Returns:
             str: 脱敏后的文本
         """
+        """
+        脱敏敏感信息
+        
+        Args:
+            text: 原始文本
+            
+        Returns:
+            str: 脱敏后的文本
+        """
         masked_text = text
         
         for info_type, pattern in SecurityUtils.SENSITIVE_PATTERNS.items():
@@ -139,3 +148,4 @@ class SecureLogger:
         if mask:
             message = SecurityUtils.mask_sensitive_info(message)
         self.logger.warning(message)
+

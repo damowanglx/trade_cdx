@@ -6,6 +6,7 @@
     from data.utils.data_utils import DataUtils
 """
 
+from typing import Dict, List, Optional, Any, Tuple, Union
 import pandas as pd
 import numpy as np
 
@@ -14,7 +15,17 @@ class DataUtils:
     """数据处理工具类"""
     
     @staticmethod
-    def validate_data(df, required_columns=None):
+    def validate_data(df: pd.DataFrame, required_columns: Optional[List[str]] = None) -> Dict[str, Any]:
+        """
+        验证数据完整性
+        
+        Args:
+            df: DataFrame数据
+            required_columns: 必需的列名列表
+            
+        Returns:
+            Dict: 验证结果
+        """
         """
         验证数据完整性
         
@@ -57,7 +68,17 @@ class DataUtils:
         return result
     
     @staticmethod
-    def clean_data(df, fill_method='ffill'):
+    def clean_data(df: pd.DataFrame, fill_method: str = 'ffill') -> pd.DataFrame:
+        """
+        清洗数据
+        
+        Args:
+            df: DataFrame数据
+            fill_method: 填充方法
+            
+        Returns:
+            DataFrame: 清洗后的数据
+        """
         """
         清洗数据
         
@@ -168,3 +189,4 @@ class DataUtils:
         df_indicators['volatility'] = df_indicators['return'].rolling(20).std() * np.sqrt(252)
         
         return df_indicators
+
