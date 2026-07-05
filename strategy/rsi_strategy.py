@@ -21,6 +21,9 @@ class RSIStrategy(bt.Strategy):
     """
     
     params = (
+        ('stop_loss', 0.10),      # 止损10%
+        ('take_profit', 0.30),    # 止盈30%
+        ('max_position', 0.30),   # 最大仓位30%
         ('rsi_period', 14),
         ('rsi_oversold', 30),
         ('rsi_overbought', 70),
@@ -67,6 +70,21 @@ class RSIStrategy(bt.Strategy):
         self.log(f'利润: {trade.pnlcomm:.2f}')
     
     def next(self):
+        # 风险控制：检查止损止盈
+        if self.position:
+            current_price = self.dataclose[0]
+            profit_pct = (current_price - self.buy_price) / self.buy_price
+            
+            # 止损检查
+            if profit_pct <= -self.params.stop_loss:
+                self.order = self.sell()
+                return
+            
+            # 止盈检查
+            if profit_pct >= self.params.take_profit:
+                self.order = self.sell()
+                return
+        
         """策略逻辑"""
         if self.order:
             return
@@ -92,4 +110,7 @@ class RSIStrategy(bt.Strategy):
                 f'超卖:{self.params.rsi_oversold}, '
                 f'超买:{self.params.rsi_overbought}) '
                 f'最终资金: {self.broker.getvalue():.2f}')
+
+
+
 

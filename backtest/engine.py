@@ -14,7 +14,18 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 class BacktestEngine:
     """回测引擎"""
     
-    def __init__(self, initial_cash=200000, commission=0.001):
+    def __init__(self, initial_cash=200000, commission=0.001, slippage=0.002):
+        """
+        初始化回测引擎
+        
+        Args:
+            initial_cash: 初始资金
+            commission: 手续费率
+            slippage: 滑点率（默认0.2%）
+        """
+        self.initial_cash = initial_cash
+        self.commission = commission
+        self.slippage = slippage
         self.initial_cash = initial_cash
         self.commission = commission
         self.cerebro = None
@@ -37,6 +48,10 @@ class BacktestEngine:
         
         self.cerebro.broker.setcash(self.initial_cash)
         self.cerebro.broker.setcommission(commission=self.commission)
+        
+        # 设置滑点
+        if self.slippage > 0:
+            cerebro.broker.set_slippage_perc(self.slippage)
         
         self.cerebro.addanalyzer(bt.analyzers.SharpeRatio, _name='sharpe')
         self.cerebro.addanalyzer(bt.analyzers.DrawDown, _name='drawdown')
@@ -154,3 +169,4 @@ class BacktestEngine:
             print(f"{name:<15} {result['total_return']:<10.2%} {sharpe_str:<10} {dd_str:<10} {wr_str:<10}")
         
         return results
+

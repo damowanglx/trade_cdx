@@ -213,3 +213,44 @@ if __name__ == '__main__':
     
     print("监控模块已创建")
     print("使用前请配置邮箱或企业微信")
+
+class RealtimeMonitor:
+    """实时监控类"""
+    
+    def __init__(self, alert_manager):
+        """
+        初始化实时监控
+        
+        Args:
+            alert_manager: 报警管理器实例
+        """
+        self.alert_manager = alert_manager
+        self.is_running = False
+        self监控间隔 = 60  # 默认60秒
+        
+    def start(self, interval=60):
+        """启动实时监控"""
+        self监控间隔 = interval
+        self.is_running = True
+        print(f"实时监控已启动，监控间隔: {interval}秒")
+        
+    def stop(self):
+        """停止实时监控"""
+        self.is_running = False
+        print("实时监控已停止")
+        
+    def check_portfolio(self, portfolio_value, positions):
+        """检查组合状态"""
+        # 检查组合价值变化
+        # 检查持仓集中度
+        # 检查风险指标
+        pass
+        
+    def send实时报告(self, portfolio_value, daily_return, positions):
+        """发送实时报告"""
+        if self.alert_manager:
+            self.alert_manager.send_daily_report(
+                portfolio_value=portfolio_value,
+                daily_return=daily_return,
+                positions=positions
+            )

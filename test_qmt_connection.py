@@ -1,4 +1,4 @@
-﻿#coding:gbk
+#coding:gbk
 """
 QMT连接测试脚本
 测试是否能连接到QMT交易端

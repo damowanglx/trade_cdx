@@ -1,4 +1,4 @@
-﻿#coding:gbk
+#coding:gbk
 """
 RSI策略 - QMT实盘版本
 基于最优参数 RSI(21, 30, 70)

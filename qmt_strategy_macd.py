@@ -1,4 +1,4 @@
-﻿#coding:gbk
+#coding:gbk
 """
 MACD策略 - QMT实盘版本
 基于最优参数 MACD(12, 20, 7)

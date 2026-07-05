@@ -18,7 +18,20 @@ from datetime import datetime
 class ParameterOptimizer:
     """参数优化器"""
     
-    def __init__(self, data_file, initial_cash=200000, commission=0.001):
+    def __init__(self, data_file, initial_cash=200000, commission=0.001, slippage=0.002):
+        """
+        初始化优化器
+        
+        Args:
+            data_file: 数据文件路径
+            initial_cash: 初始资金
+            commission: 手续费率
+            slippage: 滑点率
+        """
+        self.data_file = data_file
+        self.initial_cash = initial_cash
+        self.commission = commission
+        self.slippage = slippage
         """
         初始化优化器
         
@@ -195,3 +208,4 @@ class ParameterOptimizer:
             df = pd.DataFrame(self.results)
             df.to_csv(filename, index=False, encoding='utf-8-sig')
             print(f"结果已导出到: {filename}")
+

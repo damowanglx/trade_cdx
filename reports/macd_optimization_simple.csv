@@ -1,0 +1,7 @@
+﻿params,avg_return,avg_sharpe,win_rate
+"{'fast_period': 12, 'slow_period': 20, 'signal_period': 7}",0.28827138324279683,0.3132048838289891,0.5
+"{'fast_period': 8, 'slow_period': 20, 'signal_period': 7}",0.28125055260834375,0.2992543113154385,0.5
+"{'fast_period': 16, 'slow_period': 26, 'signal_period': 9}",0.1911096046224013,0.19196326484522877,0.5
+"{'fast_period': 12, 'slow_period': 30, 'signal_period': 11}",0.1511445770908824,0.19551971947905947,0.4
+"{'fast_period': 12, 'slow_period': 26, 'signal_period': 9}",0.1466897235926927,0.18657916353224344,0.4
+"{'fast_period': 8, 'slow_period': 26, 'signal_period': 9}",0.1464801339077408,0.18023099720780922,0.4

@@ -34,6 +34,10 @@ class DualMAStrategy(bt.Strategy):
     
     # 策略参数
     params = (
+        ('stop_loss', 0.10),      # 止损10%
+        ('take_profit', 0.30),    # 止盈30%
+        ('max_position', 0.30),   # 最大仓位30%
+        (
         ('fast_period', 5),   # 短期均线周期
         ('slow_period', 20),  # 长期均线周期
         ('printlog', True),   # 是否打印日志
@@ -270,5 +274,6 @@ if __name__ == '__main__':
             print(f"  总收益率: {results['total_return']:.2f}%")
             print(f"  夏普比率: {results['sharpe_ratio']}")
             print(f"  最大回撤: {results['max_drawdown']:.2f}%")
+
 
 

@@ -1,4 +1,4 @@
-﻿#coding:gbk
+#coding:gbk
 """
 RSI策略 - QMT完整版
 包含完整的风控、仓位管理、日志记录

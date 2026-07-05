@@ -298,3 +298,44 @@ class PerformanceAnalyzer:
         report += "=" * 60
         
         return report
+
+def send_email_alert(subject, content, email_config=None):
+    """
+    发送邮件报警
+    
+    Args:
+        subject: 邮件主题
+        content: 邮件内容
+        email_config: 邮箱配置
+    """
+    if email_config is None:
+        # 尝试从配置文件加载
+        try:
+            from config.email_config import EMAIL_CONFIG
+            email_config = EMAIL_CONFIG
+        except ImportError:
+            print("邮箱配置未找到")
+            return False
+    
+    try:
+        import smtplib
+        from email.mime.text import MIMEText
+        from email.mime.multipart import MIMEMultipart
+        
+        msg = MIMEMultipart()
+        msg['From'] = email_config['sender_email']
+        msg['To'] = email_config['receiver_email']
+        msg['Subject'] = subject
+        
+        msg.attach(MIMEText(content, 'plain', 'utf-8'))
+        
+        server = smtplib.SMTP_SSL(email_config['smtp_server'], email_config['smtp_port'])
+        server.login(email_config['sender_email'], email_config['sender_password'])
+        server.sendmail(email_config['sender_email'], email_config['receiver_email'], msg.as_string())
+        server.quit()
+        
+        print(f"邮件发送成功: {subject}")
+        return True
+    except Exception as e:
+        print(f"邮件发送失败: {e}")
+        return False

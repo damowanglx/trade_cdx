@@ -1,0 +1,7 @@
+﻿params,avg_return,avg_sharpe,win_rate
+"{'rsi_period': 21, 'rsi_oversold': 30, 'rsi_overbought': 70}",0.30133095717405556,0.3008794644713162,0.7
+"{'rsi_period': 14, 'rsi_oversold': 25, 'rsi_overbought': 75}",0.3010675511943231,0.3059796961612711,0.6
+"{'rsi_period': 14, 'rsi_oversold': 35, 'rsi_overbought': 65}",0.22254624308163296,0.2198923130404016,0.6
+"{'rsi_period': 14, 'rsi_oversold': 30, 'rsi_overbought': 70}",0.2046352343875403,0.19841557204782626,0.5
+"{'rsi_period': 7, 'rsi_oversold': 25, 'rsi_overbought': 75}",0.19285477329571307,0.18068904568518324,0.6
+"{'rsi_period': 7, 'rsi_oversold': 30, 'rsi_overbought': 70}",0.1730441909958685,0.17865850841542294,0.6

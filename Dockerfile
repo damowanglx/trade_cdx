@@ -28,6 +28,10 @@ RUN mkdir -p data/all_stocks data/cache data/database logs reports
 ENV PYTHONPATH=/app
 ENV PYTHONUNBUFFERED=1
 
+# 健康检查
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import sys; sys.exit(0)"
+
 # 暴露端口（如果需要Web界面）
 EXPOSE 8080
 

@@ -21,6 +21,9 @@ class MACDStrategy(bt.Strategy):
     """
     
     params = (
+        ('stop_loss', 0.10),      # 止损10%
+        ('take_profit', 0.30),    # 止盈30%
+        ('max_position', 0.30),   # 最大仓位30%
         ('fast_period', 12),
         ('slow_period', 26),
         ('signal_period', 9),
@@ -96,4 +99,7 @@ class MACDStrategy(bt.Strategy):
         """结束"""
         self.log(f'(MACD: {self.params.fast_period}/{self.params.slow_period}/{self.params.signal_period}) '
                 f'最终资金: {self.broker.getvalue():.2f}')
+
+
+
 
