@@ -6,9 +6,9 @@
     python scripts/format_code.py
 """
 
+import os
 import subprocess
 import sys
-import os
 
 
 def run_command(cmd, description):

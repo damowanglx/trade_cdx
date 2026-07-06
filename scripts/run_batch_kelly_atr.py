@@ -2,10 +2,11 @@
 全量股票回测 - 凯利公式+ATR仓位管理
 """
 
-import sys
 import os
-import pandas as pd
+import sys
+
 import backtrader as bt
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

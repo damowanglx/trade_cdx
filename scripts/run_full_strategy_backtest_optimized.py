@@ -6,13 +6,14 @@
     python scripts/run_full_strategy_backtest_optimized.py
 """
 
-import sys
 import os
-import pandas as pd
+import random
+import sys
+from datetime import datetime
+
 import backtrader as bt
 import numpy as np
-from datetime import datetime
-import random
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

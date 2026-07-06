@@ -9,9 +9,10 @@
 - 实时监控
 """
 
-import os
 import json
+import os
 from datetime import datetime
+
 from loguru import logger
 
 
@@ -319,8 +320,8 @@ def send_email_alert(subject, content, email_config=None):
     
     try:
         import smtplib
-        from email.mime.text import MIMEText
         from email.mime.multipart import MIMEMultipart
+        from email.mime.text import MIMEText
         
         msg = MIMEMultipart()
         msg['From'] = email_config['sender_email']

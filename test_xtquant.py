@@ -1,4 +1,5 @@
 ﻿import sys
+
 sys.path.insert(0, r"D:\国金QMT\国金证券QMT交易端\bin.x64")
 
 try:

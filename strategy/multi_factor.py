@@ -10,8 +10,8 @@
 """
 
 import backtrader as bt
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 
 class MultiFactorStrategy(bt.Strategy):

@@ -6,9 +6,10 @@ Baostock数据获取模块
 Baostock文档：http://baostock.com/baostock/index.php
 """
 
+import os
+
 import baostock as bs
 import pandas as pd
-import os
 
 
 class BaostockFetcher:

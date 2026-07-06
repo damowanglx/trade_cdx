@@ -6,11 +6,12 @@
     python -m pytest tests/test_performance.py -v
 """
 
-import sys
 import os
-import pytest
+import sys
 import time
+
 import pandas as pd
+import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -50,7 +51,7 @@ class TestBacktestPerformance:
         """测试指标计算时间"""
         try:
             import numpy as np
-            
+
             # 创建测试数据
             prices = pd.Series(np.random.randn(1000).cumsum() + 100)
             

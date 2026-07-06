@@ -6,18 +6,18 @@
     python scripts/run_optimization.py
 """
 
-import sys
 import os
+import sys
 
 # 添加项目根目录到路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from backtest.engine import BacktestEngine
+from backtest.optimizer import ParameterOptimizer
 from data.fetcher.baostock_api import BaostockFetcher
 from strategy.ma_cross import DualMAStrategy
-from strategy.rsi_strategy import RSIStrategy
 from strategy.macd_strategy import MACDStrategy
-from backtest.optimizer import ParameterOptimizer
-from backtest.engine import BacktestEngine
+from strategy.rsi_strategy import RSIStrategy
 
 
 def fetch_data():

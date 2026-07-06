@@ -6,9 +6,10 @@
     from strategy.portfolio_strategy import PortfolioStrategyManager
 """
 
-import pandas as pd
+from typing import Any, Dict, List, Optional
+
 import numpy as np
-from typing import Dict, List, Any, Optional
+import pandas as pd
 
 
 class StrategySignal:

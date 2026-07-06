@@ -6,10 +6,10 @@
     from config.validator.config_validator import ConfigValidator
 """
 
+import logging
 import os
 import sys
-from typing import Dict, List, Any, Optional
-import logging
+from typing import Any, Dict, List, Optional
 
 
 class ConfigValidator:

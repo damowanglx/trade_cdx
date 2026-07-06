@@ -6,8 +6,9 @@
     python scripts/fetch_more_data.py
 """
 
-import sys
 import os
+import sys
+
 import baostock as bs
 import pandas as pd
 

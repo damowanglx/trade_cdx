@@ -8,8 +8,8 @@
 
 import logging
 import traceback
-from typing import Any, Callable, Optional
 from functools import wraps
+from typing import Any, Callable, Optional
 
 
 class TradingError(Exception):

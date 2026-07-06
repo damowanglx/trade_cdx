@@ -6,12 +6,13 @@
     python scripts/run_quick_optimization.py
 """
 
-import sys
-import os
-import pandas as pd
-import backtrader as bt
 import itertools
+import os
 import random
+import sys
+
+import backtrader as bt
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

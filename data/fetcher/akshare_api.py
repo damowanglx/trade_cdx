@@ -5,9 +5,10 @@ AKShare数据获取模块
 AKShare文档：https://akshare.akfamily.xyz/
 """
 
+import os
+
 import akshare as ak
 import pandas as pd
-import os
 
 
 class AKShareFetcher:

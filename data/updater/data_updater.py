@@ -6,12 +6,13 @@
     from data.updater.data_updater import DataUpdater
 """
 
-import pandas as pd
-import numpy as np
-import os
 import logging
-from typing import Dict, List, Any, Optional
+import os
 from datetime import datetime, timedelta
+from typing import Any, Dict, List, Optional
+
+import numpy as np
+import pandas as pd
 
 
 class DataUpdater:
@@ -43,7 +44,7 @@ class DataUpdater:
         """
         try:
             import baostock as bs
-            
+
             # 登录baostock
             lg = bs.login()
             if lg.error_code != '0':
@@ -90,7 +91,7 @@ class DataUpdater:
         """
         try:
             import baostock as bs
-            
+
             # 登录baostock
             lg = bs.login()
             if lg.error_code != '0':

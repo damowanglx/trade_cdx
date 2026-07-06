@@ -6,11 +6,12 @@
     python -m pytest tests/test_integration_extended.py -v
 """
 
-import sys
 import os
-import pytest
-import pandas as pd
+import sys
+
 import numpy as np
+import pandas as pd
+import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -22,7 +23,7 @@ class TestStrategyBacktestIntegration:
         """测试RSI策略初始化"""
         try:
             from strategy.rsi_strategy import RSIStrategy
-            
+
             # 检查策略类是否存在
             assert hasattr(RSIStrategy, 'params')
             assert hasattr(RSIStrategy, '__init__')
@@ -44,7 +45,7 @@ class TestStrategyBacktestIntegration:
         """测试MACD策略初始化"""
         try:
             from strategy.macd_strategy import MACDStrategy
-            
+
             # 检查策略类是否存在
             assert hasattr(MACDStrategy, 'params')
             assert hasattr(MACDStrategy, '__init__')
@@ -66,7 +67,7 @@ class TestStrategyBacktestIntegration:
         """测试海龟策略初始化"""
         try:
             from strategy.turtle_strategy import TurtleStrategy
-            
+
             # 检查策略类是否存在
             assert hasattr(TurtleStrategy, 'params')
             assert hasattr(TurtleStrategy, '__init__')
@@ -79,7 +80,7 @@ class TestStrategyBacktestIntegration:
         """测试均值回归策略初始化"""
         try:
             from strategy.mean_reversion_strategy import MeanReversionStrategy
-            
+
             # 检查策略类是否存在
             assert hasattr(MeanReversionStrategy, 'params')
             assert hasattr(MeanReversionStrategy, '__init__')
@@ -96,7 +97,7 @@ class TestBacktestEngineIntegration:
         """测试引擎初始化"""
         try:
             from backtest.engine import BacktestEngine
-            
+
             # 创建引擎实例
             engine = BacktestEngine(initial_cash=100000)
             
@@ -112,7 +113,7 @@ class TestBacktestEngineIntegration:
         """测试优化器初始化"""
         try:
             from backtest.optimizer import ParameterOptimizer
-            
+
             # 检查类是否存在
             assert hasattr(ParameterOptimizer, '__init__')
             assert hasattr(ParameterOptimizer, 'optimize')
@@ -124,7 +125,7 @@ class TestBacktestEngineIntegration:
         """测试性能优化器初始化"""
         try:
             from backtest.performance import PerformanceOptimizer
-            
+
             # 创建实例
             optimizer = PerformanceOptimizer()
             
@@ -143,7 +144,7 @@ class TestMonitorIntegration:
         """测试报警管理器初始化"""
         try:
             from monitor.alert_manager import AlertManager
-            
+
             # 创建实例
             alert = AlertManager()
             
@@ -160,7 +161,7 @@ class TestMonitorIntegration:
         """测试交易监控初始化"""
         try:
             from monitor.trade_monitor import TradeLogger
-            
+
             # 检查类是否存在
             assert hasattr(TradeLogger, '__init__')
             assert hasattr(TradeLogger, 'log_trade')
@@ -176,7 +177,7 @@ class TestDataUtilsIntegration:
         """测试数据工具初始化"""
         try:
             from data.utils.data_utils import DataUtils
-            
+
             # 检查方法
             assert hasattr(DataUtils, 'validate_data')
             assert hasattr(DataUtils, 'clean_data')
@@ -191,7 +192,7 @@ class TestDataUtilsIntegration:
         """测试数据验证（使用模拟数据）"""
         try:
             from data.utils.data_utils import DataUtils
-            
+
             # 创建模拟数据
             df = pd.DataFrame({
                 'open': [10, 11, 12],
@@ -217,7 +218,7 @@ class TestSecurityIntegration:
         """测试安全工具初始化"""
         try:
             from utils.security import SecurityUtils
-            
+
             # 检查方法
             assert hasattr(SecurityUtils, 'mask_sensitive_info')
             assert hasattr(SecurityUtils, 'validate_input')
@@ -231,7 +232,7 @@ class TestSecurityIntegration:
         """测试邮箱脱敏"""
         try:
             from utils.security import SecurityUtils
-            
+
             # 测试邮箱脱敏
             text = "联系邮箱：test@example.com"
             masked = SecurityUtils.mask_sensitive_info(text)
@@ -246,7 +247,7 @@ class TestSecurityIntegration:
         """测试输入类型验证"""
         try:
             from utils.security import SecurityUtils
-            
+
             # 测试数值验证
             assert SecurityUtils.validate_input(100, int, 0, 1000) == True
             assert SecurityUtils.validate_input(-1, int, 0, 1000) == False
@@ -263,7 +264,7 @@ class TestConfigIntegration:
         """测试配置管理器初始化"""
         try:
             from config.config_manager import ConfigManager
-            
+
             # 创建实例
             config = ConfigManager()
             

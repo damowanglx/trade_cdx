@@ -7,9 +7,11 @@ A股股票代码格式：
 - 深圳：000001.SZ（平安银行）
 """
 
-import yfinance as yf
-import pandas as pd
 import os
+
+import pandas as pd
+import yfinance as yf
+
 
 def test_yfinance():
     """测试yfinance是否可用"""

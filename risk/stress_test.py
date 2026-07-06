@@ -6,9 +6,10 @@
     from risk.stress_test import StressTest
 """
 
-import pandas as pd
+from typing import Any, Dict, List
+
 import numpy as np
-from typing import Dict, List, Any
+import pandas as pd
 
 
 class StressTest:
@@ -156,7 +157,11 @@ class StressTest:
         recovery_mask = cumulative[max_dd_idx:] >= peak[max_dd_idx]
         if recovery_mask.any():
             recovery_idx = recovery_mask.idxmax()
-            return (recovery_idx - max_dd_idx).days
+            # 处理索引类型
+            if hasattr(recovery_idx, 'days'):
+                return (recovery_idx - max_dd_idx).days
+            else:
+                return int(recovery_idx - max_dd_idx)
         else:
             return -1  # 未恢复
             
@@ -256,3 +261,4 @@ class ScenarioAnalyzer:
             recommendations.append("当前风险水平可接受")
             
         return recommendations
+

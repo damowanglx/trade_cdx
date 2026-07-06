@@ -1,7 +1,7 @@
 ﻿import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 from datetime import datetime
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 # 邮箱配置
 sender_email = 'damowang123lx@163.com'

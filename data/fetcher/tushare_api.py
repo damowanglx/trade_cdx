@@ -3,10 +3,11 @@
 用于获取A股行情、财务等数据
 """
 
-import tushare as ts
-import pandas as pd
 import os
 import sys
+
+import pandas as pd
+import tushare as ts
 
 # 添加项目根目录到路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))

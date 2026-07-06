@@ -6,12 +6,13 @@
     python scripts/run_batch_optimization.py
 """
 
-import sys
-import os
-import pandas as pd
-import backtrader as bt
 import itertools
+import os
+import sys
 from datetime import datetime
+
+import backtrader as bt
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

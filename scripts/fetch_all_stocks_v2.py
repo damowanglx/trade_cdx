@@ -11,12 +11,13 @@
     python scripts/fetch_all_stocks_v2.py
 """
 
-import sys
+import json
 import os
+import sys
+import time
+
 import baostock as bs
 import pandas as pd
-import time
-import json
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

@@ -6,20 +6,21 @@
     python scripts/generate_report.py
 """
 
-import sys
 import os
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
+import sys
 from datetime import datetime
+
+import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 # 添加项目根目录到路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from backtest.engine import BacktestEngine
 from data.fetcher.baostock_api import BaostockFetcher
 from strategy.ma_cross import DualMAStrategy
-from backtest.engine import BacktestEngine
 
 
 def generate_sample_report():

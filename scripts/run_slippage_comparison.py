@@ -6,10 +6,11 @@
     python scripts/run_slippage_comparison.py
 """
 
-import sys
 import os
-import pandas as pd
+import sys
+
 import backtrader as bt
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

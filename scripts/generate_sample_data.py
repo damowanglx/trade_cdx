@@ -8,9 +8,11 @@
 - 趋势、波动、随机性
 """
 
-import pandas as pd
-import numpy as np
 import os
+
+import numpy as np
+import pandas as pd
+
 
 def generate_stock_data(symbol='000001', start_date='2025-01-01', periods=250, initial_price=10.0):
     """

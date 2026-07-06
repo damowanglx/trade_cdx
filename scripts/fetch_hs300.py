@@ -2,9 +2,11 @@
 获取沪深300基准数据
 """
 
+import os
+
 import baostock as bs
 import pandas as pd
-import os
+
 
 def fetch_hs300():
     """获取沪深300数据"""

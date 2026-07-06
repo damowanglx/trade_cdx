@@ -6,17 +6,17 @@
     python scripts/run_full_backtest.py
 """
 
-import sys
 import os
+import sys
 
 # 添加项目根目录到路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from backtest.engine import BacktestEngine
 from data.fetcher.baostock_api import BaostockFetcher
 from strategy.ma_cross import DualMAStrategy
-from strategy.rsi_strategy import RSIStrategy
 from strategy.macd_strategy import MACDStrategy
-from backtest.engine import BacktestEngine
+from strategy.rsi_strategy import RSIStrategy
 
 
 def fetch_real_data():

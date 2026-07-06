@@ -6,12 +6,13 @@
     python scripts/run_full_strategy_backtest.py
 """
 
-import sys
 import os
-import pandas as pd
+import sys
+from datetime import datetime
+
 import backtrader as bt
 import numpy as np
-from datetime import datetime
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

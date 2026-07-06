@@ -6,11 +6,12 @@ SQLite数据库模块
     python scripts/migrate_to_sqlite.py
 """
 
-import sys
 import os
-import pandas as pd
 import sqlite3
+import sys
 from datetime import datetime
+
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

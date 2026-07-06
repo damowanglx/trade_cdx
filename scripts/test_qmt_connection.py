@@ -6,8 +6,8 @@ QMT连接测试脚本
     python scripts/test_qmt_connection.py
 """
 
-import sys
 import os
+import sys
 
 # 添加QMT路径
 qmt_python_path = r'D:\国金QMT\国金证券QMT交易端\python'
@@ -42,7 +42,7 @@ def test_qmt_data():
     
     try:
         from xtquant import xtdata
-        
+
         # 获取平安银行数据
         stock_code = "000001.SZ"
         data = xtdata.get_market_data_ex(

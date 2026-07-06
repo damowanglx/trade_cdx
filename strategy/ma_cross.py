@@ -13,11 +13,12 @@
 4. 理解回测结果指标
 """
 
-import sys
 import os
-import pandas as pd
-import numpy as np
+import sys
+
 import backtrader as bt
+import numpy as np
+import pandas as pd
 
 # 添加项目根目录到路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))

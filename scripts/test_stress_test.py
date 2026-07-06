@@ -6,15 +6,16 @@
     python scripts/test_stress_test.py
 """
 
-import sys
 import os
-import pandas as pd
-import numpy as np
+import sys
 from datetime import datetime
+
+import numpy as np
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from risk.stress_test import StressTest, ScenarioAnalyzer
+from risk.stress_test import ScenarioAnalyzer, StressTest
 
 
 def main():

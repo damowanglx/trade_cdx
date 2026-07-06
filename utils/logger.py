@@ -6,12 +6,12 @@
     from utils.logger import TradingLogger
 """
 
-import os
-import logging
 import json
-from typing import Dict, Any, Optional
+import logging
+import os
 from datetime import datetime
 from logging.handlers import RotatingFileHandler, TimedRotatingFileHandler
+from typing import Any, Dict, Optional
 
 
 class TradingLogger:

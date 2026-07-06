@@ -6,12 +6,13 @@
     python scripts/run_parallel_backtest.py
 """
 
-import sys
 import os
-import pandas as pd
-import backtrader as bt
-from multiprocessing import Pool, cpu_count
+import sys
 from datetime import datetime
+from multiprocessing import Pool, cpu_count
+
+import backtrader as bt
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

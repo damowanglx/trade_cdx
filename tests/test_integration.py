@@ -6,10 +6,11 @@
     python -m pytest tests/test_integration.py -v
 """
 
-import sys
 import os
-import pytest
+import sys
+
 import pandas as pd
+import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -22,8 +23,8 @@ class TestStrategyIntegration:
         # 这里应该测试策略在回测引擎中的运行
         # 由于需要真实数据，这里只测试导入
         try:
-            from strategy.rsi_strategy import RSIStrategy
             from backtest.engine import BacktestEngine
+            from strategy.rsi_strategy import RSIStrategy
             assert True
         except ImportError:
             pytest.skip("模块导入失败")
@@ -31,8 +32,8 @@ class TestStrategyIntegration:
     def test_macd_strategy_with_backtest(self):
         """测试MACD策略与回测引擎集成"""
         try:
-            from strategy.macd_strategy import MACDStrategy
             from backtest.engine import BacktestEngine
+            from strategy.macd_strategy import MACDStrategy
             assert True
         except ImportError:
             pytest.skip("模块导入失败")
@@ -40,8 +41,8 @@ class TestStrategyIntegration:
     def test_turtle_strategy_with_backtest(self):
         """测试海龟策略与回测引擎集成"""
         try:
-            from strategy.turtle_strategy import TurtleStrategy
             from backtest.engine import BacktestEngine
+            from strategy.turtle_strategy import TurtleStrategy
             assert True
         except ImportError:
             pytest.skip("模块导入失败")
@@ -87,7 +88,7 @@ class TestSecurityIntegration:
         """测试敏感信息脱敏"""
         try:
             from utils.security import SecurityUtils
-            
+
             # 测试邮箱脱敏
             text = "联系邮箱：test@example.com"
             masked = SecurityUtils.mask_sensitive_info(text)
@@ -99,7 +100,7 @@ class TestSecurityIntegration:
         """测试输入验证"""
         try:
             from utils.security import SecurityUtils
-            
+
             # 测试数值验证
             assert SecurityUtils.validate_input(100, int, 0, 1000) == True
             assert SecurityUtils.validate_input(-1, int, 0, 1000) == False
@@ -123,7 +124,7 @@ class TestDataUtilsIntegration:
         """测试数据验证"""
         try:
             from data.utils.data_utils import DataUtils
-            
+
             # 创建测试数据
             df = pd.DataFrame({
                 'open': [10, 11, 12],

@@ -7,10 +7,11 @@
     python scripts/test_risk_control.py
 """
 
-import sys
 import os
-import pandas as pd
+import sys
+
 import backtrader as bt
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

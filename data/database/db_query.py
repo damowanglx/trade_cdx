@@ -6,9 +6,10 @@ SQLite数据库查询模块
     from data.database.db_query import StockDB
 """
 
-import sqlite3
-import pandas as pd
 import os
+import sqlite3
+
+import pandas as pd
 
 
 class StockDB:

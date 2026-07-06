@@ -6,9 +6,10 @@
     from data.utils.data_utils import DataUtils
 """
 
-from typing import Dict, List, Optional, Any, Tuple, Union
-import pandas as pd
+from typing import Any, Dict, List, Optional, Tuple, Union
+
 import numpy as np
+import pandas as pd
 
 
 class DataUtils:

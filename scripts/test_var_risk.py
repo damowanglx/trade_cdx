@@ -6,15 +6,16 @@ VaR风险价值测试
     python scripts/test_var_risk.py
 """
 
-import sys
 import os
-import pandas as pd
-import numpy as np
+import sys
 from datetime import datetime
+
+import numpy as np
+import pandas as pd
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from risk.var_calculator import VaRCalculator, RiskMetrics
+from risk.var_calculator import RiskMetrics, VaRCalculator
 
 
 def main():
