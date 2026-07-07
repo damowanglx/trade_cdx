@@ -5,7 +5,6 @@ KDJ策略
 策略逻辑：
 - K线上穿D线买入
 - K线下穿D线卖出
-- J值超买超卖辅助判断
 """
 
 import backtrader as bt
@@ -13,22 +12,14 @@ import numpy as np
 
 
 class KDJStrategy(bt.Strategy):
-    """
-    KDJ策略
-    
-    参数：
-    - kdj_period: KDJ周期（默认9日）
-    - kdj_signal: 信号线周期（默认3日）
-    - stop_loss: 止损比例（默认10%）
-    - take_profit: 止盈比例（默认30%）
-    """
+    """KDJ策略"""
     
     params = (
-        ('kdj_period', 9),        # KDJ周期
-        ('kdj_signal', 3),        # 信号线周期
-        ('stop_loss', 0.10),      # 止损10%
-        ('take_profit', 0.30),    # 止盈30%
-        ('max_position', 0.30),   # 最大仓位30%
+        ('kdj_period', 9),
+        ('kdj_signal', 3),
+        ('stop_loss', 0.10),
+        ('take_profit', 0.30),
+        ('max_position', 0.30),
         ('printlog', False),
     )
     
@@ -37,8 +28,6 @@ class KDJStrategy(bt.Strategy):
         self.datahigh = self.datas[0].high
         self.datalow = self.datas[0].low
         
-        # 计算KDJ指标
-        # 这里使用简化的KDJ计算
         self.highest = bt.indicators.Highest(self.datahigh, period=self.params.kdj_period)
         self.lowest = bt.indicators.Lowest(self.datalow, period=self.params.kdj_period)
         
@@ -76,12 +65,11 @@ class KDJStrategy(bt.Strategy):
         else:
             rsv = 50
         
-        # 计算K值和D值（简化）
+        # 计算K值和D值
         self.k_value = 2/3 * self.k_value + 1/3 * rsv
         self.d_value = 2/3 * self.d_value + 1/3 * self.k_value
         j_value = 3 * self.k_value - 2 * self.d_value
         
-        # 持仓检查
         if self.position:
             profit_pct = (current_price - self.buy_price) / self.buy_price
             
@@ -102,28 +90,14 @@ class KDJStrategy(bt.Strategy):
                 self.log(f'KDJ卖出信号: K={self.k_value:.2f}, D={self.d_value:.2f}, J={j_value:.2f}')
                 self.order = self.sell()
                 return
-        
-        # 空仓检查
         else:
             # K线上穿D线买入
             if self.k_value > self.d_value and j_value < 20:
-                # 计算仓位
                 cash = self.broker.getcash()
                 size = int(cash * 0.9 / current_price / 100) * 100
-                
-                # 限制最大仓位
                 max_size = int(self.broker.getvalue() * self.params.max_position / current_price / 100) * 100
                 size = min(size, max_size)
                 
                 if size >= 100:
                     self.log(f'KDJ买入信号: K={self.k_value:.2f}, D={self.d_value:.2f}, J={j_value:.2f}')
                     self.order = self.buy(size=size)
-
-
-if __name__ == '__main__':
-    print("KDJ策略已创建")
-    print("参数:")
-    print("  KDJ周期: 9日")
-    print("  信号线周期: 3日")
-    print("  止损: 10%")
-    print("  止盈: 30%")
